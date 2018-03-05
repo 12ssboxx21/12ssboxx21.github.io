@@ -92,7 +92,7 @@ function setup() {
         definetile(tp);
     }
 
-    function definetile(a) {
+    function definetile(a) {    //setter current tile inn i brettet, og definerer hvilke verdier som skal sjekkes av funksjonene movedown, sidemove og rot
         let currentpiece = [];
         for (i = (bW - 6) / 2; i < (bw - (bw - 6 / 2)); i++) {
             for (j = 0; j < 6; i++) {
