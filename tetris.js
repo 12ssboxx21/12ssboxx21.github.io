@@ -44,11 +44,11 @@ function setup() {
         ctx.stroke();
 
         for (let i = 0; i < bx; i++) {
-            brett[0].push(brettPiece);
+            brett.push(brettPiece);
         }
 
 
-        brett[0].push(brettBottom);
+        brett.push(brettBottom);
         return brett;
 
 
@@ -120,11 +120,11 @@ function setup() {
             // down arrow
         }
         else if (e.keyCode == '37') {
-            sidemove(-1)
+            sidemove(-1,currentpiece)
             // left arrow
         }
         else if (e.keyCode == '39') {
-            sidemove(1)
+            sidemove(1,currentpiece)
             // right arrow
         }
 
@@ -145,8 +145,12 @@ function setup() {
 
                 else {
                     brett[j + a][i] = brett[j][i];
+                    
                 }
         }
+    return brett;
+    definetile()
+    
     }
 
     for (i = 5; i < bH; i++) {      //tegner brikkene inni brettet
@@ -175,15 +179,7 @@ function setup() {
         }
     }
 
-    function rot(a) {
-        let b = []
-        for (let y = 0; y < a.length; y++) {
-            b[y] = [];
-            for (let x = 0; x < a.length; x++) {
-                b[y][x] = a[x][y];
-            }
-        }
-
-    }
+    
 
 }
+
