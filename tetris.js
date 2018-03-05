@@ -12,33 +12,34 @@ function setup() {
 
 
     let brett = [];
-    
+
 
     let bx = (bW) * bS;
     let by = (bH + 6) * bS;
 
     let btnStart = document.getElementById("start");
     btnStart.addEventListener("click", drawscreen);
+    btnStart.addEventListener("click", drawtiles);
 
     function drawscreen() {     /* tegner skjermen og lager en array  */
 
 
-        let brettPiece = [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9];
+        let brettPiece = [9, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 9];
         let brettBottom = [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9];
         let ctx = screen.getContext("2d");
         ctx.moveTo(0, 0);
-        ctx.lineTo(0, bH*bS);
+        ctx.lineTo(0, bH * bS);
         ctx.stroke();
 
-        ctx.moveTo(0, bH*bS);
-        ctx.lineTo(bW*bS, bH*bS);
+        ctx.moveTo(0, bH * bS);
+        ctx.lineTo(bW * bS, bH * bS);
         ctx.stroke();
 
-        ctx.moveTo(bW*bS, bH*bS);
-        ctx.lineTo(bW*bS, 0);
+        ctx.moveTo(bW * bS, bH * bS);
+        ctx.lineTo(bW * bS, 0);
         ctx.stroke();
 
-        ctx.moveTo(bW*bS, 0);
+        ctx.moveTo(bW * bS, 0);
         ctx.lineTo(0, 0);
         ctx.stroke();
 
@@ -119,11 +120,11 @@ function setup() {
             // down arrow
         }
         else if (e.keyCode == '37') {
-            sidemove(-1,currentpiece)
+            sidemove(-1, currentpiece)
             // left arrow
         }
         else if (e.keyCode == '39') {
-            sidemove(1,currentpiece)
+            sidemove(1, currentpiece)
             // right arrow
         }
 
@@ -144,41 +145,42 @@ function setup() {
 
                 else {
                     brett[j + a][i] = brett[j][i];
-                    
+
                 }
         }
-    return brett;
-    definetile()
-    
+        return brett;
+        definetile()
+
     }
+    function drawtiles() {
+        for (i = 5; i < bH; i++) {      //tegner brikkene inni brettet
+            for (j = 1; j < bW; j++) {
+                let x = (j - 1) * bS;
+                let y = (i - 1) * bS;
+                if (brett[j][i] === 1) {
+                    let ctx = screen.getContext("2d");
+                    ctx.moveTo(y, x);
+                    ctx.lineTo(y, x + bS);
+                    ctx.stroke();
 
-    for (i = 5; i < bH; i++) {      //tegner brikkene inni brettet
-        for (j = 1; j < bW ; j++) {
-            let x = (j - 1) * bS;
-            let y = (i - 1) * bS;
-            if (brett[j][i] === 1) {
-                let ctx = screen.getContext("2d");
-                ctx.moveTo(x, y);
-                ctx.lineTo(x, y + bS);
-                ctx.stroke();
+                    ctx.moveTo(y, x + bS);
+                    ctx.lineTo(y + bS, x + bS);
+                    ctx.stroke();
 
-                ctx.moveTo(x, y + bS);
-                ctx.lineTo(x + bS, y + bS);
-                ctx.stroke();
+                    ctx.moveTo(y + bS, x + bS);
+                    ctx.lineTo(y + bS, x);
+                    ctx.stroke();
 
-                ctx.moveTo(x + bS, y + bS);
-                ctx.lineTo(x + bS, y);
-                ctx.stroke();
+                    ctx.moveTo(y + bS, x);
+                    ctx.lineTo(y, x);
+                    ctx.stroke();
+                }
 
-                ctx.moveTo(x + bS, y);
-                ctx.lineTo(x, y);
-                ctx.stroke();
             }
-
         }
     }
 
-    
+
 
 }
 
