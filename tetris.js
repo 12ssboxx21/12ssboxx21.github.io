@@ -1,6 +1,3 @@
-
-
-
 function setup() {
 
     const bW = 10;
@@ -10,6 +7,7 @@ function setup() {
 
     let screen = document.getElementById("screen");
     let poeng = document.getElementById("poeng");
+    let cPos = document.getElementById('canvas');
 
 
 
@@ -20,26 +18,27 @@ function setup() {
     let by = (bH + 6) * bS;
 
     let btnStart = document.getElementById("start");
-    btnStart.addEventListener("click", drawscreen(by, bx));
+    btnStart.addEventListener("click", drawscreen);
 
-    function drawscreen(a, b) {     /* tegner skjermen og lager en array  */
+    function drawscreen() {     /* tegner skjermen og lager en array  */
+
 
         let brettPiece = [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9];
         let brettBottom = [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9];
         let ctx = screen.getContext("2d");
         ctx.moveTo(0, 0);
-        ctx.lineTo(0, a);
+        ctx.lineTo(0, bH*bS);
         ctx.stroke();
 
-        ctx.moveTo(0, a);
-        ctx.lineTo(b, a);
+        ctx.moveTo(0, bH*bS);
+        ctx.lineTo(bW*bS, bH*bS);
         ctx.stroke();
 
-        ctx.moveTo(b, a);
-        ctx.lineTo(b, 0);
+        ctx.moveTo(bW*bS, bH*bS);
+        ctx.lineTo(bW*bS, 0);
         ctx.stroke();
 
-        ctx.moveTo(b, 0);
+        ctx.moveTo(bW*bS, 0);
         ctx.lineTo(0, 0);
         ctx.stroke();
 
