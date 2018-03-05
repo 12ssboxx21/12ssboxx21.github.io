@@ -14,7 +14,7 @@ function setup() {
 
 
     let brett = [];
-    let currentpiece= [];
+    
 
     let bx = (bW) * bS;
     let by = (bH + 6) * bS;
@@ -92,22 +92,22 @@ function setup() {
         definetile(tp);
     }
 
-    function definetile(a){
-        let currentpiece= [];
-        for (i= (bW-6)/2; i<(bw-(bw-6/2)); i++){
-            for (j= 0; j<6; i++){
-                brett[j][i]=a[j][i-(bw-6)/2];
+    function definetile(a) {
+        let currentpiece = [];
+        for (i = (bW - 6) / 2; i < (bw - (bw - 6 / 2)); i++) {
+            for (j = 0; j < 6; i++) {
+                brett[j][i] = a[j][i - (bw - 6) / 2];
                 currentpiece.push(brett[j][i]);
             }
         }
     }
 
-    
+
 
 
     document.onkeydown = checkKey;
 
-    function checkKey(e) {
+    function checkKey(e) {    //aktiveres når man trykker ned en piltast, og reagerer avhengig av hvilken
 
         e = e || window.event;
 
@@ -130,7 +130,7 @@ function setup() {
 
     }
 
-    function sidemove(a,b) {
+    function sidemove(a, b) {   //sjekker om brikkene kan bevege seg til venstre/ høyre
 
         for (i = bW + 1; i > 0; i--) {
             for (j = bH + 1; j > 0; j--)
@@ -149,8 +149,8 @@ function setup() {
         }
     }
 
-    for (i = 5; i < bH; i++) {
-        for (j = 1; j < bW - 1; j++) {
+    for (i = 5; i < bH; i++) {      //tegner brikkene inni brettet
+        for (j = 1; j < bW ; j++) {
             let x = (j - 1) * bS;
             let y = (i - 1) * bS;
             if (brett[j][i] === 1) {

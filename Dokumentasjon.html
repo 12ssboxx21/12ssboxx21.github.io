@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,16 +8,30 @@
     <script src="Dokumentasjon.js"></script>
     <title>Dokumentasjon for it2</title>
 </head>
+
 <body>
     <h1>Tetris</h1>
-    <img src="classic-tetris-logo.jpg" alt="tetris">
-    tetris er et spill der du skal stable forskjellige bokser
-    slik at man får fylt opp rader, da forsvinner raden og man får et poeng
+    <img src="classic-tetris-logo.png" alt="tetris">
+    <p>tetris er et spill der du skal stable forskjellige bokser slik at man får fylt opp rader, da forsvinner raden og man
+        får et poeng</p>
 
-    et slikt spill krever minimalt med erfaring og 
+    <p> slikt spill krever minimalt med systemkrav</p>
+    <p>Man må definere spillbrettet, brikkene, og ha løkker som går igjennom brettet for å se etter: </p>
+    <ul>
+        <li>Om radene er fylt opp</li>
+        <li>Om brikken du flytter på kolliderer med andre brikker</li>
+        <li>en løkke som snur på brikkene (takk til Audun hauge for koden)</li>
+    </ul>
+    <p>Løkka som sjekker om radene er fulle kjøres etter plassert brikke, og før en ny en lages.</p>
+    <p>løkka som sjekker om brikken kolliderer er mer komplisert, </p>
+    <p>da den skal sjekkes hver gang brikken beveger seg, og den skal kun sjekke at det er brikken som kolliderer</p>
+    <p>hvis ikke det bare er brikken som blir sjekket, vil hele brettet flytte seg. ikke bare brikken</p>
+    <p></p>
 
 
-
-    <button type="button" id="start"></button>
+    <p></p>
+    <button type="button" id="start">START GAME</button>
+    <script>setup()</script>
 </body>
+
 </html>
