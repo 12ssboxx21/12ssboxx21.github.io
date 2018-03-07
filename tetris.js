@@ -1,21 +1,17 @@
 function setup() {
 
     const bW = 10;
-    const bH = 14;
-    const bS = 40;
+    const bH = 18;
+    const bS = 30;
 
+    let brett = [];
+
+    let bx = (bW);
+    let by = (bH + 7);
 
     let screen = document.getElementById("screen");
     let poeng = document.getElementById("poeng");
     let cPos = document.getElementById('canvas');
-
-
-
-    let brett = [];
-
-
-    let bx = (bW) * bS;
-    let by = (bH + 6) * bS;
 
     let btnStart = document.getElementById("start");
     btnStart.addEventListener("click", drawscreen);
@@ -26,7 +22,7 @@ function setup() {
 
         let brettPiece = [9, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 9];
         let brettBottom = [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9];
-        let ctx = screen.getContext("2d");
+        /*let ctx = screen.getContext("2d");
         ctx.moveTo(0, 0);
         ctx.lineTo(0, bH * bS);
         ctx.stroke();
@@ -41,9 +37,9 @@ function setup() {
 
         ctx.moveTo(bW * bS, 0);
         ctx.lineTo(0, 0);
-        ctx.stroke();
+        ctx.stroke(); */
 
-        for (let i = 0; i < bx; i++) {
+        for (let i = 0; i < by; i++) {
             brett.push(brettPiece);
         }
 
@@ -51,7 +47,7 @@ function setup() {
         brett.push(brettBottom);
         return brett;
 
-
+        console.log(brett);
     }
 
     //definerer de forskjellige brikkene i en 6x6 array
@@ -112,7 +108,8 @@ function setup() {
         e = e || window.event;
 
         if (e.keyCode == '38') {
-            rot()
+
+            rot(linje)
             // up arrow
         }
         else if (e.keyCode == '40') {
@@ -148,14 +145,14 @@ function setup() {
 
                 }
         }
-        return brett;
+        console.log(brett);
         definetile()
 
     }
     function drawtiles() {
         for (i = 5; i < bH; i++) {      //tegner brikkene inni brettet
             for (j = 1; j < bW; j++) {
-                let x = (j - 1) * bS;
+                let x = (j) * bS;
                 let y = (i - 1) * bS;
                 if (brett[j][i] === 1) {
                     let ctx = screen.getContext("2d");
@@ -180,7 +177,19 @@ function setup() {
         }
     }
 
+    function rot(a) {
+        let b = []
+        for (let y = 0; y < a.length; y++) {
+            b[y] = [];
+            for (let x = 0; x < a.length; x++) {
+                b[y][x] = a[x][y];
 
+            }
+        }
+        return b;
+
+
+    }
 
 }
 
