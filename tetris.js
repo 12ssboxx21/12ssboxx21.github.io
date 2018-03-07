@@ -5,7 +5,7 @@ function setup() {
     const bS = 30;
 
     let brett = [];
-    
+
     let by = (bH + 5);
 
     let screen = document.getElementById("screen");
@@ -38,27 +38,26 @@ function setup() {
         ctx.lineTo(0, 0);
         ctx.stroke(); */
 
-        brettPiece.push(9);
-        for (let i=0; i<bW; i++){
+        brettPiece.push(9);     //lager arrayen som bygger opp brettet
+        for (let i = 0; i < bW; i++) {
             brettPiece.push(0);
         }
         brettPiece.push(9);
 
-        for (let i=0; i<bW+2; i++){
+        for (let i = 0; i < bW + 2; i++) {      //lager bunnen av arrayen
             brettBottom.push(9);
         }
 
-        for (let i = 0; i < by; i++) {
+        for (let i = 0; i < by; i++) {      //lager arrayen
             brett.push(brettPiece);
         }
 
-        
+
         brett.push(brettBottom);
         return brett;
 
-        console.log(brett);
+        newtile()   //starter spillet
 
-        
     }
 
     //definerer de forskjellige brikkene i en 6x6 array
@@ -96,21 +95,51 @@ function setup() {
             tp = linje;
         }
         return tp;
-        definetile(tp);
-    }
 
-    function definetile(a) {    //setter current tile inn i brettet, og definerer hvilke verdier som skal sjekkes av funksjonene movedown, sidemove og rot
-        let currentpiece = [];
-        for (i = (bW - 6) / 2; i < (bw - (bw - 6 / 2)); i++) {
-            for (j = 0; j < 6; i++) {
-                brett[j][i] = a[j][i - (bw - 6) / 2];
-                currentpiece.push(brett[j][i]);
+        //pusher brikken inn i brettet, og sender verdiene videre til "behandling"
+
+        let startPos = [[0, 1, 2, 3, 4, 5], [, 0, 1, 2, 3, 4, 5], 0];
+        for (j = 0; j < 6; j++) {
+            for (i = /*(bW - 6) */ 2; i < /*(bw - ((bw - 6) / 2))*/ 8; i++) {
+                brett[i][j] = 1;
             }
         }
+        console.log(brett);
+        tilepos(startPos);
+
     }
 
 
 
+
+
+    function tilepos(a) {
+        let tilepos = [];
+        if (a[3] = 0) { //aktiveres ved newTile
+            for (i = 0; i < 2; i++) {
+                for (j = 0; j < 6; j++) {
+                    tilepos[i][j] = a[i][j];
+                }
+            }
+
+
+        }
+
+        if (a[3] = 1) { //aktiveres ved movedown
+            for (j = 0; j < 6; j++) {
+                tilepos.push(a[0][j] + 1)
+            }
+        }
+
+        if (a[3] = 1) { //aktiveres ved movedown
+            for (i = 0; i < 6; i++) {
+                tilepos.push(a[i][1] + 1)
+            }
+        }
+
+
+
+    }
 
     document.onkeydown = checkKey;
 
@@ -197,7 +226,8 @@ function setup() {
 
             }
         }
-        return b;
+        console.log(b);
+
 
 
     }
