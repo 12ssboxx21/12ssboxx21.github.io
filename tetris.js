@@ -5,9 +5,8 @@ function setup() {
     const bS = 30;
 
     let brett = [];
-
-    let bx = (bW);
-    let by = (bH + 7);
+    
+    let by = (bH + 5);
 
     let screen = document.getElementById("screen");
     let poeng = document.getElementById("poeng");
@@ -20,8 +19,8 @@ function setup() {
     function drawscreen() {     /* tegner skjermen og lager en array  */
 
 
-        let brettPiece = [9, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 9];
-        let brettBottom = [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9];
+        let brettPiece = [];
+        let brettBottom = [];
         /*let ctx = screen.getContext("2d");
         ctx.moveTo(0, 0);
         ctx.lineTo(0, bH * bS);
@@ -39,15 +38,27 @@ function setup() {
         ctx.lineTo(0, 0);
         ctx.stroke(); */
 
+        brettPiece.push(9);
+        for (let i=0; i<bW; i++){
+            brettPiece.push(0);
+        }
+        brettPiece.push(9);
+
+        for (let i=0; i<bW+2; i++){
+            brettBottom.push(9);
+        }
+
         for (let i = 0; i < by; i++) {
             brett.push(brettPiece);
         }
 
-
+        
         brett.push(brettBottom);
         return brett;
 
         console.log(brett);
+
+        
     }
 
     //definerer de forskjellige brikkene i en 6x6 array
