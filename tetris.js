@@ -19,7 +19,7 @@ function setup() {
 
         let brettPiece = [];
         let brettBottom = [];
-        
+
         let ctx = screen.getContext("2d");
 
         ctx.moveTo(0, 0);
@@ -55,20 +55,19 @@ function setup() {
 
         brett.push(brettBottom);
         console.log(brett);
-        return brett;
 
         newtile()   //starter spillet
 
     }
 
     //definerer de forskjellige brikkene i en 6x6 array
-    let boks = [[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 1, 1, 0, 0], [0, 0, 1, 1, 0, 0], [0, 0, 0, 0, 0, 0],0];   /* 2x2 boks  */
-    let linje = [[0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 0],1];   /* 1x4 linje */
-    let Lr = [[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 1, 1, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 0],2];   /* L r       */
-    let Ll = [[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 1, 1, 0, 0], [0, 0, 0, 1, 0, 0], [0, 0, 0, 1, 0, 0], [0, 0, 0, 0, 0, 0],3];   /* L l       */
-    let Zl = [[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 1, 0, 0], [0, 0, 1, 1, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 0],4];   /* Z l       */
-    let Zr = [[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 1, 1, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 0],5];   /* Z r       */
-    let T = [[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 1, 0, 0], [0, 0, 1, 1, 0, 0], [0, 0, 0, 1, 0, 0], [0, 0, 0, 0, 0, 0],6];   /* T         */
+    let boks = [[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 1, 1, 0, 0], [0, 0, 1, 1, 0, 0], [0, 0, 0, 0, 0, 0], 0];   /* 2x2 boks  */
+    let linje = [[0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 0], 1];   /* 1x4 linje */
+    let Lr = [[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 1, 1, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 0], 2];   /* L r       */
+    let Ll = [[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 1, 1, 0, 0], [0, 0, 0, 1, 0, 0], [0, 0, 0, 1, 0, 0], [0, 0, 0, 0, 0, 0], 3];   /* L l       */
+    let Zl = [[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 1, 0, 0], [0, 0, 1, 1, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 0], 4];   /* Z l       */
+    let Zr = [[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 1, 1, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 0], 5];   /* Z r       */
+    let T = [[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 1, 0, 0], [0, 0, 1, 1, 0, 0], [0, 0, 0, 1, 0, 0], [0, 0, 0, 0, 0, 0], 6];   /* T         */
 
 
     function newtile() { // velger en tilfeldig tile basert på math.random
@@ -95,18 +94,21 @@ function setup() {
         else {
             tp = linje;
         }
-        return tp;
+
+        console.log(brett, tp);
 
         //pusher brikken inn i brettet, og sender verdiene videre til "behandling"
-
-        let startPos = [[0, 1, 2, 3, 4, 5], [, 0, 1, 2, 3, 4, 5]];       //virker ikke??
-        for (j = 0; j < 6; j++) {
-            for (i = /*(bW - 6) */ 2; i < /*(bw - ((bw - 6) / 2))*/ 8; i++) {
-                brett[i][j] = 1;
+        let idx = 0;
+        let startPos = [[0, 1, 2, 3, 4, 5], [ 0, 1, 2, 3, 4, 5]];       //virker ikke??
+        for (let x = 0; x < 6; x++) {
+            for (let y = 3; y < 9; y++) {
+                brett[x][y] = 1;
+                idx++;
             }
+
         }
-        console.log(brett);
-        tilepos(startPos,0);
+
+        // tilepos(startPos,0)*/;
 
     }
 
@@ -142,18 +144,18 @@ function setup() {
 
     }
 
-    function moveDown(a){
-        
+    function moveDown(a) {
+
     }
 
     document.onkeydown = checkKey;
 
-    function checkKey(e,a) {    //aktiveres når man trykker ned en piltast, og reagerer avhengig av hvilken
+    function checkKey(e, a) {    //aktiveres når man trykker ned en piltast, og reagerer avhengig av hvilken
 
         e = e || window.event;
 
         if (e.keyCode == '38') {
-            
+
             rot(a)
             // up arrow
         }
@@ -161,7 +163,7 @@ function setup() {
             tilepos(a, 1)
             // down arrow
         }
-        else if (e=1){
+        else if (e = 1) {
             tilepos(a, 1)
         }
         else if (e.keyCode == '37') {
