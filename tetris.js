@@ -17,10 +17,11 @@ function setup() {
 
     function drawscreen() {     /* tegner skjermen og lager en array  */
 
-
         let brettPiece = [];
         let brettBottom = [];
+        
         let ctx = screen.getContext("2d");
+
         ctx.moveTo(0, 0);
         ctx.lineTo(0, bH * bS);
         ctx.stroke();
